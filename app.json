@@ -1,32 +1,40 @@
 {
   "expo": {
-    "name": "insta",
-    "slug": "insta",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
+		"name": "Insta",
+		"slug": "SocialApp",
+		"description": "This is a social App for connecting with friends.",
+
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/icon.png",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#fff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+	
+		"ios": {
+			"bundleIdentifier": "com.jaykakkar31.insta",
+			"buildNumber": "1.0.0",
+
+			"supportsTablet": true
+		},
+		"android": {
+			"versionCode": 1,
+
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/adaptive-icon.png",
+				"backgroundColor": "#fff"
+			},
+			"package": "com.jaykakkar31.insta",
+			"permissions": ["CAMERA", "READ_EXTERNAL_STORAGE"]
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		}
+	}
 }
