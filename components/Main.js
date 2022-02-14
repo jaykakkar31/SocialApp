@@ -8,14 +8,12 @@ import {
 	clearData,
 	reload,
 } from "../store/actions/userActions";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import firebase from "firebase";
 import Feed from "./main/Feed";
 import { Entypo } from "@expo/vector-icons";
 import Profile from "./main/Profile";
 import Add from "./main/Add";
-import AnimatedTabBar, { TabsConfigsType } from "curved-bottom-navigation-bar";
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import Search from "./main/Search";
