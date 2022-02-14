@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Alert, Button, Text, TextInput, View } from "react-native";
+import { Alert, Button, StatusBar, Text, TextInput, View } from "react-native";
 // Initialize Cloud Firestore through Firebase
 import firebase from "firebase";
 import { container, form } from "../Styles";
@@ -209,6 +209,7 @@ const Register = (props) => {
 					Already have an account? SignIn.
 				</Text>
 			</View>
+			<StatusBar backgroundColor={"#005a00"} />
 		</View>
 
 		// <View

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Alert, Button, Text, TextInput, View } from "react-native";
+import { Alert, Button, StatusBar, Text, TextInput, View } from "react-native";
 import firebase from "firebase";
 // import * as firebase from 'firebase'
 import { container, form } from "../Styles";
@@ -105,6 +105,8 @@ const Login = (props) => {
 	};
 	return (
 		<View style={container.center}>
+			{/* <StatusBar backgroundColor={"#005a00"} /> */}
+
 			<View style={container.formCenter}>
 				<TextInput
 					style={form.textInput}
@@ -162,6 +164,7 @@ const Login = (props) => {
 					Don't have an account? SignUp.
 				</Text>
 			</View>
+			<StatusBar backgroundColor={"#005a00"} />
 		</View>
 		// <View
 		// 	style={{
