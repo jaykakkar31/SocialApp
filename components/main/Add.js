@@ -4,13 +4,13 @@ import {
 	Text,
 	View,
 	TouchableOpacity,
-	Button ,
+	Button,
 	Image,
 } from "react-native";
 import { Camera } from "expo-camera";
 import * as ImagePicker from "expo-image-picker";
 
-export default function Add({ navigation ,route}) {
+export default function Add({ navigation, route }) {
 	const [hasCameraPermission, setHasCameraPermission] = useState(null);
 	const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
 	const [camStatus, setCamStatus] = useState();
@@ -19,9 +19,8 @@ export default function Add({ navigation ,route}) {
 	const [imageUri, setImageUri] = useState(null);
 	const [galleryPickedImage, setGalleryPickedImage] = useState(null);
 	const [isCamera, setIsCamera] = useState(true);
-    
+
 	useEffect(() => {
-       
 		(async () => {
 			try {
 				const { status } = await Camera.requestCameraPermissionsAsync();
@@ -71,9 +70,39 @@ export default function Add({ navigation ,route}) {
 	};
 
 	if (hasCameraPermission === null || hasGalleryPermission == null) {
+		(async () => {
+			try {
+				const { status } = await Camera.requestCameraPermissionsAsync();
+				setHasCameraPermission(status === "granted");
+
+				setCamStatus(status);
+
+				const galleryStatus =
+					await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+				setHasGalleryPermission(galleryStatus.status === "granted");
+			} catch (e) {
+				console.log(e);
+			}
+		})();
 		return <View />;
 	}
 	if (hasCameraPermission === false || hasGalleryPermission === false) {
+	(async () => {
+		try {
+			const { status } = await Camera.requestCameraPermissionsAsync();
+			setHasCameraPermission(status === "granted");
+
+			setCamStatus(status);
+
+			const galleryStatus =
+				await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+			setHasGalleryPermission(galleryStatus.status === "granted");
+		} catch (e) {
+			console.log(e);
+		}
+	})();
 		return <Text>No access to camera</Text>;
 	}
 	return (
@@ -88,7 +117,8 @@ export default function Add({ navigation ,route}) {
 			)}
 			<View style={styles.buttonContainer}>
 				<View style={styles.button}>
-					<Button color={"#005a00"}
+					<Button
+						color={"#005a00"}
 						onPress={() => {
 							setType(
 								type === Camera.Constants.Type.back
@@ -100,14 +130,23 @@ export default function Add({ navigation ,route}) {
 					/>
 				</View>
 				<View style={styles.button}>
-					<Button color={"#005a00"} title="Take picture" onPress={takePicture} />
+					<Button
+						color={"#005a00"}
+						title="Take picture"
+						onPress={takePicture}
+					/>
 				</View>
 				<View style={styles.button}>
-					<Button color={"#005a00"}  title="Pick image from Gallery" onPress={pickImage} />
+					<Button
+						color={"#005a00"}
+						title="Pick image from Gallery"
+						onPress={pickImage}
+					/>
 				</View>
 				{imageUri && (
 					<View style={styles.button}>
-						<Button color={"#005a00"}
+						<Button
+							color={"#005a00"}
 							title="Save image"
 							onPress={() => navigation.navigate("Save", { imageUri })}
 						/>

@@ -28,7 +28,7 @@
 
 			"adaptiveIcon": {
 				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#fff"
+				"backgroundColor": "#005a00"
 			},
 			"package": "com.jaykakkar31.insta",
 			"permissions": ["CAMERA", "READ_EXTERNAL_STORAGE"]

@@ -10,7 +10,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import { initializeApp } from "firebase/app";
 import * as firebase from "firebase";
-import { ActivityIndicator, LogBox, SafeAreaView, View } from "react-native";
+import { ActivityIndicator, LogBox, SafeAreaView, StatusBar, View } from "react-native";
 import { Provider, useDispatch } from "react-redux";
 import store from "./store/store";
 import MainScreen from "./components/Main";
@@ -20,6 +20,7 @@ import { enableScreens } from "react-native-screens";
 import Save from "./components/main/Save";
 import Search from "./components/main/Search";
 import Comment from "./components/main/Comment";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyD-TD3MgxPP2irZqlIGGvZ4UpV0qXMOaRM",
@@ -93,6 +94,7 @@ export default function App() {
 
 	return (
 		<Provider store={store}>
+        <StatusBar backgroundColor={"#005a00"}/>
 			<NavigationContainer>
 				<Stack.Navigator initialRouteName="Main">
 					<Stack.Screen
@@ -110,6 +112,7 @@ export default function App() {
 							switch (routeName) {
 								case "Add": {
 									return {
+                                        
 										headerTitle: "Camera",
 										headerStyle: {
 											backgroundColor: "#005a00",

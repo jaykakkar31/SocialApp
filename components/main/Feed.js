@@ -4,7 +4,6 @@ import {
 	Button,
 	FlatList,
 	Image,
-	StatusBar,
 	StyleSheet,
 	Text,
 	TouchableOpacity,
@@ -15,7 +14,7 @@ import { SafeAreaView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import firebase from "firebase";
 import { AntDesign, FontAwesome, Fontisto } from "@expo/vector-icons";
-
+import {StatusBar} from 'expo-status-bar'
 import "firebase/firestore";
 import {
 	clearData,
@@ -223,6 +222,7 @@ const Feed = (props) => {
 					horizontal={false}
 				/>
 			</View>
+			{/* <StatusBar style="light" /> */}
 		</View>
 	) : (
 		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
