@@ -85,7 +85,7 @@ const Main = () => {
 					tabPress: (event) => {
 						event.preventDefault();
 						navigation.navigate("Profile", {
-							id: firebase.auth().currentUser.uid,
+							id: firebase?.auth().currentUser.uid,
 						});
 					},
 				})}

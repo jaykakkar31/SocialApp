@@ -17,14 +17,14 @@ const Save = (props) => {
 	const [isLoading, setIsLoading] = useState(false);
 	// const childPath = `post//${Math.random().toString(36)}`;
 	const childPath = `post/${
-		firebase.auth().currentUser.uid
+		firebase?.auth().currentUser.uid
 	}/${Math.random().toString(36)}`;
 	useEffect(() => {}, [isLoading]);
 	const savePostData = (url) => {
 		firebase
 			.firestore()
 			.collection("posts")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.collection("userPosts")
 			.add({
 				likesCount: 0,

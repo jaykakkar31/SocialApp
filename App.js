@@ -3,6 +3,7 @@ import {
 	getFocusedRouteNameFromRoute,
 	NavigationContainer,
 } from "@react-navigation/native";
+// import { useDispatch } from "react-redux";
 // import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Landing from "./components/auth/Landing";
@@ -39,15 +40,18 @@ export default function App() {
 	// firebaseConfig
 	LogBox.ignoreLogs(["Warning: ..."]);
 	LogBox.ignoreAllLogs();
+    // const dispatch=useDispatch()
 	const [isLoading, setIsLoading] = useState(true);
 	const [loggedIn, setLoggedIn] = useState(false);
 	useEffect(() => {
 		if (firebase.apps.length === 0) {
 			firebase.initializeApp(firebaseConfig);
 		}
-		firebase.auth().onAuthStateChanged((user) => {
+		firebase?.auth().onAuthStateChanged((user) => {
 			if (!user) {
+                // dispatch(clearData())
 				setLoggedIn(false);
+
 				setIsLoading(false);
 			} else {
 				setLoggedIn(true);

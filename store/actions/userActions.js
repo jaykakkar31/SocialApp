@@ -40,7 +40,7 @@ export const fetchUserPosts = () => {
 		firebase
 			.firestore()
 			.collection("posts")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.collection("userPosts")
 			.orderBy("creation", "asc")
 			.get()
@@ -62,17 +62,18 @@ export const fetchUserPosts = () => {
 export const reload=()=>{
     return dispatch=>{
         dispatch(clearData());
-				dispatch(fetchUser(firebase.auth().currentUser.uid));
+				dispatch(fetchUser(firebase?.auth().currentUser.uid));
 				dispatch(fetchUserPosts());
 				dispatch(fetchUserFollowing());
     }
 }
+
 export const fetchUserFollowing = () => {
 	return (dispatch) => {
 		firebase
 			.firestore()
 			.collection("following")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.collection("userFollowing")
 			.onSnapshot((snapshot) => {
 				let following = snapshot.docs.map((doc) => {
@@ -167,7 +168,7 @@ export const fetchUsersFollowingLikes = (uid, postId) => {
 				.doc(postId)
 				.collection("likes")
 				// .orderBy("creation", "asc")
-				.doc(firebase.auth().currentUser.uid)
+				.doc(firebase?.auth().currentUser.uid)
 				//realtime
 				.onSnapshot((snapshot) => {
 					try {

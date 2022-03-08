@@ -73,7 +73,7 @@ const Comment = (props) => {
 			.doc(props.route.params.postId)
 			.collection("comments")
 			.add({
-				creator: firebase.auth().currentUser.uid,
+				creator: firebase?.auth().currentUser.uid,
 				text: text,
 			})
 			.then((response) => {

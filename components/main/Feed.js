@@ -74,7 +74,7 @@ const Feed = (props) => {
 			.doc(postId)
 			.collection("likes")
 			// .orderBy("creation", "asc")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.set({});
 
 		firebase
@@ -98,7 +98,7 @@ const Feed = (props) => {
 			.doc(postId)
 			.collection("likes")
 			// .orderBy("creation", "asc")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.delete();
 		firebase
 			.firestore()

@@ -16,7 +16,7 @@ import "firebase/firestore";
 import { FontAwesome } from "@expo/vector-icons";
 import * as Updates from "expo-updates";
 
-import { reload } from "../../store/actions/userActions";
+import { clearData, reload } from "../../store/actions/userActions";
 const Profile = (props) => {
 	const [user, setUser] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -78,7 +78,7 @@ const Profile = (props) => {
 		firebase
 			.firestore()
 			.collection("following")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.collection("userFollowing")
 			.doc(props.route.params.id)
 			.delete();
@@ -87,7 +87,7 @@ const Profile = (props) => {
 		firebase
 			.firestore()
 			.collection("following")
-			.doc(firebase.auth().currentUser.uid)
+			.doc(firebase?.auth().currentUser.uid)
 			.collection("userFollowing")
 			.doc(props.route.params.id)
 			.set({});
@@ -96,8 +96,12 @@ const Profile = (props) => {
 		firebase
 			.auth()
 			.signOut()
-			        Updates.reloadAsync();
+		// 	.then(() => {
+				// dispatch(clearData())
 
+			// });
+
+		// Updates.reloadAsync();
 	};
 
 	return isLoading ? (
@@ -106,21 +110,24 @@ const Profile = (props) => {
 		</View>
 	) : (
 		<View style={styles.container}>
-        {user?
-			<View style={styles.containerInfo}>
-				<View style={{ marginVertical: 10 }}>
-					<FontAwesome name="user-circle" size={60} color="#0c8900" />
-				</View>
+			{user ? (
+				<View style={styles.containerInfo}>
+					<View style={{ marginVertical: 10 }}>
+						<FontAwesome name="user-circle" size={60} color="#0c8900" />
+					</View>
 
-				<View style={{ alignItems: "center" }}>
-					<Text style={{ fontSize: 19, fontWeight: "700", color: "#005a00" }}>
-						{user.name}
-					</Text>
-					<Text style={{ color: "#0c8900" }}>{user.email}</Text>
+					<View style={{ alignItems: "center" }}>
+						<Text style={{ fontSize: 19, fontWeight: "700", color: "#005a00" }}>
+							{user.name}
+						</Text>
+						<Text style={{ color: "#0c8900" }}>{user.email}</Text>
+					</View>
 				</View>
-			</View>:dispatch(reload())}
+			) : (
+				dispatch(reload())
+			)}
 			<View style={{ marginVertical: 10, width: "100%", alignItems: "center" }}>
-				{firebase.auth().currentUser.uid !== props.route.params.id ? (
+				{firebase?.auth().currentUser.uid !== props.route.params.id ? (
 					following ? (
 						<Button
 							color={"#005a00"}

@@ -105,7 +105,7 @@ const Register = (props) => {
 				firebase
 					.firestore()
 					.collection("users")
-					.doc(firebase.auth().currentUser.uid)
+					.doc(firebase?.auth().currentUser.uid)
 					.set({
 						name: name,
 						email: email,
